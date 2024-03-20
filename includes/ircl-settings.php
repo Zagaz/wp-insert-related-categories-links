@@ -53,7 +53,7 @@ class ircl_settings
           //3.a
           add_settings_section(
                "ircl-settings-section", // ID
-               "Set this to ON", // Title
+               null, // Title
                null, // Callback
                "ircl-settings" // Page slug
           );
