@@ -90,8 +90,6 @@ class main
           }
           if ($the_paragraph_location > count($content)) {
                $the_paragraph_location = count($content) -1;
-
-
           }
 
                
