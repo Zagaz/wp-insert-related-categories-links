@@ -15,6 +15,7 @@ if ( ! defined ( 'ABSPATH' ) ) {
 define( 'IRCL_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 require_once IRCL_PLUGIN_DIR . 'includes/ircl-main.php';
+require_once IRCL_PLUGIN_DIR . 'includes/ircl-settings.php';
 
 
 
