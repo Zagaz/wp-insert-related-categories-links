@@ -1,18 +1,6 @@
-# wp-insert-related-categories-links
-🧪 - Test 
-🚿 - Clean Up - When comments and other unnecessary code is removed. 
-🖥️ - Coding - 
-📋 - Notes and Documentation 
-🐞 - Bug fix 
-💎 - Beautify 
-☕ - Coffee Break (Also: Lunch, Snack, Save etc.)
-🚀 - Push to production
-🔖 - Versioning
-📁 - Now folder or file
-🔥 - Remove code or file
+# wp-insert-related-categories-links 
 
-// A description of this plugin
-
+### ⚠️This project still in prossess!⚠️
 ## Installation
 1. Upload the `wp-insert-related-categories-links` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
@@ -28,3 +16,15 @@ Introducing my latest creation: a plugin that inserts a list of Related Posts se
 Whether you're a blogger looking to enhance reader engagement or a content creator seeking to improve navigation on your site, this plugin adds that extra touch of user experience customization. 🌟
 
 Stay tuned for more updates and details on how you can get your hands on this plugin! And remember, coding doesn't just have to be work - it can be fun and rewarding too! 💻⚡ #CodingForFun #PluginDevelopment #RelatedPosts #UserExperience #WebDevelopment
+
+🧪 - Test 
+🚿 - Clean Up - When comments and other unnecessary code is removed. 
+🖥️ - Coding - 
+📋 - Notes and Documentation 
+🐞 - Bug fix 
+💎 - Beautify 
+☕ - Coffee Break (Also: Lunch, Snack, Save etc.)
+🚀 - Push to production
+🔖 - Versioning
+📁 - Now folder or file
+🔥 - Remove code or file
