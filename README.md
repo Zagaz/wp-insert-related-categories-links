@@ -5,4 +5,5 @@
 📋 - Notes and Documentation 
 🐞 - Bug fix 
 💎 - Beautify 
+
 ☕ - Coffee Break (Also: Lunch, Snack, Save etc.)
