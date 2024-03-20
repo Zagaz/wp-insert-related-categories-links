@@ -3,5 +3,6 @@
 🚿 - Clean Up - When comments and other unnecessary code is removed. 
 🖥️ - Coding - 
 📋 - Notes and Documentation 
-🐞 - Bug fix 💎 - Beautify 
+🐞 - Bug fix 
+💎 - Beautify 
 ☕ - Coffee Break (Also: Lunch, Snack, Save etc.)
