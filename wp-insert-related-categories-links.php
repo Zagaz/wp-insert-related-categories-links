@@ -1,11 +1,11 @@
 <?php 
 /*
 Plugin Name: WP Insert Related Categories Links
-Plugin URI: http://www.wpinsert.com
+Plugin URI: https://github.com/Zagaz/wp-insert-related-categories-links
 Description: This plugin will insert related categories links in your posts.
 Author: André Ranulfo
 Version: 1.0
-Author URI: http://www.wpinsert.com
+Author URI: https://www.linkedin.com/in/andre-ranulfo/
 */
 
 if ( ! defined ( 'ABSPATH' ) ) {
