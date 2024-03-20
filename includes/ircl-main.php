@@ -91,8 +91,7 @@ class main
           if ($the_paragraph_location > count($content)) {
                $the_paragraph_location = count($content) -1;
           }
-
-               
+ 
           if (is_single() ) {
               if ($this->get_is_active() == "") {
                        return implode( '</p>', $content);
