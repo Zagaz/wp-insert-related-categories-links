@@ -6,3 +6,8 @@
 🐞 - Bug fix 
 💎 - Beautify 
 ☕ - Coffee Break (Also: Lunch, Snack, Save etc.)
+🚀 - Push to production
+🔖 - Versioning
+📁 - Now folder or file
+🔥 - Remove code or file
+
