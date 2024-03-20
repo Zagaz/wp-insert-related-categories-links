@@ -89,8 +89,12 @@ class main
                $the_paragraph_location = $the_paragraph_location;
           }
 
-                  
-          if (is_single()) {
+               
+          if (is_single() ) {
+              if ($this->get_is_active() == "") {
+                       return implode('</p>', $content);
+              }
+              
 
                $relatedPosts = new WP_Query(
                     array(

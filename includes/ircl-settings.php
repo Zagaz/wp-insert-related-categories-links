@@ -71,7 +71,7 @@ class ircl_settings
                "ircl-settings-group",
                "ircl-is-active", // ID->
                array(
-                    'sanatize_callback' => "sanitize_text_field",
+                    'sanatize_callback' => "sanitize_bool_field", // Sanitize
                     'default' => '2',
                )
           );
@@ -106,7 +106,7 @@ class ircl_settings
                "ircl-settings-group",
                "ircl-is-last-paragraph", // ID
                array(
-                    'sanatize_callback' => "sanitize_text_field",
+                    'sanatize_callback' => "sanitize_bool_field", // Sanitize
                     'default' => '1',
                )
           );
@@ -132,6 +132,13 @@ class ircl_settings
           <input type='checkbox' name='ircl-is-last-paragraph' value='1' <?php checked(1, get_option('ircl-is-last-paragraph'), true);  ?>  /> <br>
           <small>It will display the links after the last paragraph.</small>     
      <?php }
+
+     // Sanitize boolean
+
+     function sanitize_bool_field($input)
+     {
+          return (isset($input) && $input == 1) ? 1 : 0;
+     }
 
 
 
