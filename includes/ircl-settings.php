@@ -53,7 +53,7 @@ class ircl_settings
           //3.a
           add_settings_section(
                "ircl-settings-section", // ID
-               "Set this to ON", // Title
+              null, // Title
                null, // Callback
                "ircl-settings" // Page slug
           );
@@ -72,16 +72,92 @@ class ircl_settings
                "ircl-is-active", // ID->
                array(
                     'sanatize_callback' => "sanitize_text_field",
+                    'default' => '2',
+               )
+          );
+          
+          // A number filed Set number of paragraph
+          add_settings_field(
+               "ircl-number-paragraph", // ID
+               "Number of Paragraphs", // Title
+               array($this, "number_paragraph_HTML"), // Callback
+               "ircl-settings", // Page slug
+               "ircl-settings-section" // Section
+          );
+          register_setting(
+               "ircl-settings-group",
+               "ircl-number-paragraph", // ID
+               array(
+                    'sanatize_callback' => "sanitize_text_field",
+                    'default' => '2',
+               )
+          );
+
+          //Boolean is last paragraph
+          add_settings_field(
+               "ircl-is-last-paragraph", // ID
+               "Is Last Paragraph?", // Title
+               array($this, "is_last_paragraph_HTML"), // Callback
+               "ircl-settings", // Page slug
+               "ircl-settings-section" // Section
+          );
+
+          register_setting(
+               "ircl-settings-group",
+               "ircl-is-last-paragraph", // ID
+               array(
+                    'sanatize_callback' => "sanitize_text_field",
                     'default' => '1',
                )
           );
-     }
 
+          
+     }
+     // Is active BOOLEAN
      function is_active_HTML()
      { ?>
         <input type='checkbox' name='ircl-is-active' value='1' <?php checked(1, get_option('ircl-is-active'), true); ?> />
      <?php 
      }
+     //Number of paragraphs
+     function number_paragraph_HTML()
+     { ?>
+          <input type="number" name="ircl-number-paragraph" value="<?php echo get_option('ircl-number-paragraph'); ?>" size="4"/> <br>
+          <small>It will display the links after this number of paragraphs</small> 
+     <?php }
+
+     //Is last paragraph BOOLEAN
+     function is_last_paragraph_HTML()
+     { ?>
+          <input type='checkbox' name='ircl-is-last-paragraph' value='1' <?php checked(1, get_option('ircl-is-last-paragraph'), true);  ?>  /> <br>
+          <small>It will display the links after the last paragraph.</small>
+          
+          <script>
+               // listem to  : name - ircl-is-last-paragraph. If checked, disable the number of paragraphs if unchecked, enable the number of paragraphs
+               document.addEventListener('DOMContentLoaded', function(){
+                    let isLastParagraph = document.querySelector('input[name="ircl-is-last-paragraph"]');
+                    let numberParagraph = document.querySelector('input[name="ircl-number-paragraph"]');
+                    isLastParagraph.addEventListener('change', function(){
+                         if(isLastParagraph.checked){
+                              numberParagraph.disabled = true;
+                         }else{
+                              numberParagraph.disabled = false;
+                         }
+                    });
+
+                    
+               }); 
+            
+          </script>
+
+
+          
+     <?php }
+
+
+
+
+
 
     
 }
