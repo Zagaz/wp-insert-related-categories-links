@@ -14,25 +14,42 @@ if (!defined('ABSPATH')) {
      exit;
 }
 
+$ircl_is_active = get_option('ircl-is-active'); // Bool
+$ircl_number_paragraph = get_option('ircl-number-paragraph'); // Int
+$ircl_is_last_paragraph = get_option('ircl-is-last-paragraph'); // Bool
 
-$main = new Main(2, false);
+$main = new Main( $ircl_is_active, $ircl_number_paragraph, $ircl_is_last_paragraph);
 
 /**
  * Main class for the plugin
  */
 class main
 {
+     public $is_active = false; 
      public $paragraphs = 0;
      public $is_last = false;
 
-     public function __construct($paragraphs, $is_last = false)
+     public function __construct($is_active , $paragraphs, $is_last = false)
      {
           add_action('init', array($this, 'ircl_content'));
+          $this-> set_is_active($is_active); 
           $this->set_paragraphs($paragraphs);
           $this->set_is_last($is_last);
+
      }
 
      // getters and setters
+
+     public function get_is_active()
+     {
+          return $this->is_active;
+     }
+
+     public function set_is_active($is_active)
+     {
+          $this->is_active = $is_active;
+     }
+
      public function get_paragraphs()
      {
           return $this->paragraphs;
@@ -67,16 +84,12 @@ class main
 
           // Placing the related links where it should be
           if ($this->get_is_last()) {
-               $the_paragraph_location = count($content);
+               $the_paragraph_location = count($content) -1;
           } else {
                $the_paragraph_location = $the_paragraph_location;
           }
 
-          // A fallback in case the paragraph location is greater than the content
-          if (count($content) < $the_paragraph_location) {
-               $the_paragraph_location = count($content);
-          }
-          
+                  
           if (is_single()) {
 
                $relatedPosts = new WP_Query(

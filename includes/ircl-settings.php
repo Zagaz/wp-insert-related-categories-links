@@ -53,7 +53,7 @@ class ircl_settings
           //3.a
           add_settings_section(
                "ircl-settings-section", // ID
-              null, // Title
+               "Set this to ON", // Title
                null, // Callback
                "ircl-settings" // Page slug
           );
@@ -130,28 +130,7 @@ class ircl_settings
      function is_last_paragraph_HTML()
      { ?>
           <input type='checkbox' name='ircl-is-last-paragraph' value='1' <?php checked(1, get_option('ircl-is-last-paragraph'), true);  ?>  /> <br>
-          <small>It will display the links after the last paragraph.</small>
-          
-          <script>
-               // listem to  : name - ircl-is-last-paragraph. If checked, disable the number of paragraphs if unchecked, enable the number of paragraphs
-               document.addEventListener('DOMContentLoaded', function(){
-                    let isLastParagraph = document.querySelector('input[name="ircl-is-last-paragraph"]');
-                    let numberParagraph = document.querySelector('input[name="ircl-number-paragraph"]');
-                    isLastParagraph.addEventListener('change', function(){
-                         if(isLastParagraph.checked){
-                              numberParagraph.disabled = true;
-                         }else{
-                              numberParagraph.disabled = false;
-                         }
-                    });
-
-                    
-               }); 
-            
-          </script>
-
-
-          
+          <small>It will display the links after the last paragraph.</small>     
      <?php }
 
 
