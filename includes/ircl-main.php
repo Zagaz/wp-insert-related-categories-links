@@ -1,11 +1,25 @@
 <?php
 
+/**
+ * This is the main file for the plugin. It will be responsible for the main functionality of the plugin.
+ * 
+ * @package IRCL
+ * @version 1.0
+ * @return void
+ * 
+ */
+
+
 if (!defined('ABSPATH')) {
      exit;
 }
 
-$main = new Main(2, false); // This will be changed to the admin settings
 
+$main = new Main(2, false);
+
+/**
+ * Main class for the plugin
+ */
 class main
 {
      public $paragraphs = 0;
@@ -48,9 +62,10 @@ class main
      public function ircl_insert_related_categories($content)
      {
 
-          $the_paragraph_location = $this->get_paragraphs();
+          $the_paragraph_location = $this->get_paragraphs() - 1; // E.g.: If 3 it will be displayed after 3rd paragraph.
           $content = explode('</p>', $content);
 
+          // Placing the related links where it should be
           if ($this->get_is_last()) {
                $the_paragraph_location = count($content);
           } else {
@@ -61,12 +76,9 @@ class main
           if (count($content) < $the_paragraph_location) {
                $the_paragraph_location = count($content);
           }
-
-
+          
           if (is_single()) {
 
-          
-               // query for related posts
                $relatedPosts = new WP_Query(
                     array(
                          'category__in' => wp_get_post_categories(get_the_ID()),
@@ -75,21 +87,19 @@ class main
                     )
                );
 
-               $content[$the_paragraph_location - 1] .= "<div class = 'ircl-related-links' >";
-               $content[$the_paragraph_location - 1] .= '<ul class = "ircl-related-links-list">';
+               $content[$the_paragraph_location] .= "<div class = 'ircl-related-links' >";
+               $content[$the_paragraph_location] .= '<ul class = "ircl-related-links-list">';
                foreach ($relatedPosts->posts as $post) {
-                    $content[$the_paragraph_location - 1] .= '<li>';
-                    $content[$the_paragraph_location - 1] .= '<a href="' . get_permalink($post->ID) . '">';
-                    $content[$the_paragraph_location - 1] .= $post->post_title;
-                    $content[$the_paragraph_location - 1] .= '</a>';
-                    $content[$the_paragraph_location - 1] .= '</li>';
+                    $content[$the_paragraph_location] .= '<li>';
+                    $content[$the_paragraph_location] .= '<a href="' . get_permalink($post->ID) . '">';
+                    $content[$the_paragraph_location] .= $post->post_title;
+                    $content[$the_paragraph_location] .= '</a>';
+                    $content[$the_paragraph_location] .= '</li>';
                }
-               $content[$the_paragraph_location - 1] .= '</ul>';
-               $content[$the_paragraph_location - 1] .= '</div>';
+               $content[$the_paragraph_location] .= '</ul>';
+               $content[$the_paragraph_location] .= '</div>';
 
-
-               $content = implode('</p>', $content);
-               return $content;
+               return implode('</p>', $content);
           }
      }
 }
