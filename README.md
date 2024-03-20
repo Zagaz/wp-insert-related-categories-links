@@ -1,6 +1,6 @@
 # wp-insert-related-categories-links 
 
-### ⚠️This project still in prossess!⚠️
+### ⚠️This project still in progress!⚠️
 ## Installation
 1. Upload the `wp-insert-related-categories-links` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
