@@ -28,5 +28,5 @@ Stay tuned for more updates and details on how you can get your hands on this pl
 ☕ - Coffee Break (Also: Lunch, Snack, Save etc.)
 🚀 - Push to production
 🔖 - Versioning
-📁 - Now folder or file
-🔥 - Remove code or file
+📁 - New folder or file
+🔥 - Remove folder or file
