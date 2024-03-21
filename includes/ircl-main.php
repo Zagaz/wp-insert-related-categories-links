@@ -17,25 +17,27 @@ if (!defined('ABSPATH')) {
 $ircl_is_active = get_option('ircl-is-active'); // Bool
 $ircl_number_paragraph = get_option('ircl-number-paragraph'); // Int
 $ircl_is_last_paragraph = get_option('ircl-is-last-paragraph'); // Bool
+$ircl_title = get_option('ircl-title'); // String
 
-$main = new Main( $ircl_is_active, $ircl_number_paragraph, $ircl_is_last_paragraph);
+$main = new Main($ircl_is_active, $ircl_number_paragraph, $ircl_title, $ircl_is_last_paragraph,);
 
 /**
  * Main class for the plugin
  */
 class main
 {
-     public $is_active = false; 
+     public $is_active = false;
      public $paragraphs = 0;
      public $is_last = false;
+     public $title = "";
 
-     public function __construct($is_active , $paragraphs, $is_last = false)
+     public function __construct($is_active, $paragraphs, $title, $is_last = false,)
      {
           add_action('init', array($this, 'ircl_content'));
-          $this-> set_is_active($is_active); 
+          $this->set_is_active($is_active);
           $this->set_paragraphs($paragraphs);
           $this->set_is_last($is_last);
-
+          $this->set_title($title);
      }
 
      // getters and setters
@@ -70,6 +72,16 @@ class main
           $this->is_last = $is_last;
      }
 
+     public function get_title()
+     {
+          return $this->title;
+     }
+
+     public function set_title($title)
+     {
+          $this->title = $title;
+     }
+
 
      public function ircl_content()
      {
@@ -84,19 +96,19 @@ class main
 
           // Placing the related links where it should be
           if ($this->get_is_last()) {
-               $the_paragraph_location = count($content) -1;
+               $the_paragraph_location = count($content) - 1;
           } else {
                $the_paragraph_location = $the_paragraph_location;
           }
           if ($the_paragraph_location > count($content)) {
-               $the_paragraph_location = count($content) -1;
+               $the_paragraph_location = count($content) - 1;
           }
- 
-          if (is_single() ) {
-              if ($this->get_is_active() == "") {
-                       return implode( '</p>', $content);
-              }
-              
+
+          if (is_single()) {
+               if ($this->get_is_active() == "") {
+                    return implode('</p>', $content);
+               }
+
 
                $relatedPosts = new WP_Query(
                     array(
@@ -107,10 +119,11 @@ class main
                );
 
                $content[$the_paragraph_location] .= "<div class = 'ircl-related-links' >";
+               $content[$the_paragraph_location] .= "<h4>" . $this->get_title() . "</h4>";
                $content[$the_paragraph_location] .= '<ul class = "ircl-related-links-list">';
                foreach ($relatedPosts->posts as $post) {
-                    $content[$the_paragraph_location] .= '<li>';
-                    $content[$the_paragraph_location] .= '<a href="' . get_permalink($post->ID) . '">';
+                    $content[$the_paragraph_location] .= '<li class = "ircl-related-links-list-item">';
+                    $content[$the_paragraph_location] .= '<a class = "ircl-related-links-list-item-link" href = "' . get_permalink($post->ID) . '">';
                     $content[$the_paragraph_location] .= $post->post_title;
                     $content[$the_paragraph_location] .= '</a>';
                     $content[$the_paragraph_location] .= '</li>';
