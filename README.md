@@ -1,6 +1,8 @@
 # wp-insert-related-categories-links 
 
 ### ⚠️This project still in progress!⚠️
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FZagaz%2Fwp-insert-related-categories-links&count_bg=%23277478&title_bg=%23555555&icon=wordpress.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 ## Installation
 1. Upload the `wp-insert-related-categories-links` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
