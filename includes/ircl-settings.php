@@ -110,6 +110,22 @@ class ircl_settings
                     'default' => '1',
                )
           );
+          //Text -> Title
+          add_settings_field(
+               "ircl-title", // ID
+               "Title", // Title
+               array($this, "title_HTML"), // Callback
+               "ircl-settings", // Page slug
+               "ircl-settings-section" // Section
+          );
+          register_setting(
+               "ircl-settings-group",
+               "ircl-title", // ID
+               array(
+                    'sanatize_callback' => "sanitize_text_field",
+                    'default' => 'Related Links',
+               )
+          );
 
           
      }
@@ -131,6 +147,13 @@ class ircl_settings
      { ?>
           <input type='checkbox' name='ircl-is-last-paragraph' value='1' <?php checked(1, get_option('ircl-is-last-paragraph'), true);  ?>  /> <br>
           <small>It will display the links after the last paragraph.</small>     
+    
+     <?php }
+
+     function title_HTML()
+     { ?>
+          <input type="text" name="ircl-title" value="<?php echo get_option('ircl-title'); ?>" size="50"/> <br>
+          <small>It will display the title of the links</small>
      <?php }
 
      // Sanitize boolean
