@@ -88,7 +88,7 @@ class ircl_settings
                "ircl-settings-group",
                "ircl-number-paragraph", // ID
                array(
-                    'sanatize_callback' => "sanitize_text_field",
+                    'sanatize_callback' => "sanitize_number_field",
                     'default' => '2',
                )
           );
@@ -138,7 +138,7 @@ class ircl_settings
      //Number of paragraphs
      function number_paragraph_HTML()
      { ?>
-          <input type="number" name="ircl-number-paragraph" value="<?php echo get_option('ircl-number-paragraph'); ?>" size="4"/> <br>
+          <input type="number" name="ircl-number-paragraph" value="<?php echo get_option('ircl-number-paragraph'); ?>" size="4" min="1"/> <br>
           <small>It will display the links after this number of paragraphs</small> 
      <?php }
 
@@ -161,6 +161,12 @@ class ircl_settings
      function sanitize_bool_field($input)
      {
           return (isset($input) && $input == 1) ? 1 : 0;
+     }
+
+     function sanitize_number_field($input)
+     {
+        
+          return (isset($input) && is_numeric($input) && $input > 0) ? $input : 1;
      }
 
 
