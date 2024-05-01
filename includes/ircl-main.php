@@ -104,7 +104,7 @@ class main
                $the_paragraph_location = count($content) - 1;
           }
 
-          if (is_single()) {
+          if (is_single() ) {
                if ($this->get_is_active() == "") {
                     return implode('</p>', $content);
                }
@@ -117,6 +117,13 @@ class main
                          'post__not_in' => array(get_the_ID())
                     )
                );
+
+             // Warning: Undefined array key -1 in /var/www/html/wp-content/plugins/wp-insert-related-categories-links/includes/ircl-main.php on line 127
+
+               if ($relatedPosts->post_count == 0) {
+                    return implode('</p>', $content);
+               }
+
 
                $content[$the_paragraph_location] .= "<div class = 'ircl-related-links' >";
                $content[$the_paragraph_location] .= "<h4>" . $this->get_title() . "</h4>";
